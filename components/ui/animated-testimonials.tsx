@@ -3,6 +3,7 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 type Testimonial = {
   quote: string;
@@ -19,9 +20,9 @@ export const AnimatedTestimonials = ({
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
-const handleNext = useCallback(() => {
-  setActive((prev) => (prev + 1) % testimonials.length);
-}, [testimonials.length]);
+  const handleNext = () => {
+    setActive((prev) => (prev + 1) % testimonials.length);
+  };
 
   const handlePrev = () => {
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
@@ -36,7 +37,7 @@ const handleNext = useCallback(() => {
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [handleNext,autoplay]);
+  }, [autoplay]);
 
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
@@ -79,13 +80,13 @@ const handleNext = useCallback(() => {
                   }}
                   className="absolute inset-0 origin-bottom"
                 >
-                  <img
+                  <Image
                     src={testimonial.src}
                     alt={testimonial.name}
                     width={500}
                     height={500}
+                    className="h-full w-full rounded-3xl object-cover object-center select-none"
                     draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
                   />
                 </motion.div>
               ))}

@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Head from "next/head";
 import Link from "next/link";
+import { FaCheckCircle, FaPalette, FaUsers, FaComments } from "react-icons/fa";
+
 // Ensure types are correctly recognized for GSAP plugins
 declare module "gsap" {
   interface TweenVars {
@@ -14,6 +16,7 @@ const AboutUs = () => {
   // Refs with proper typing
   const elements = useRef<HTMLDivElement[]>([]);
   const floatingShapes = useRef<SVGSVGElement[]>([]);
+  const whyChooseUsRef = useRef<HTMLDivElement>(null);
 
   // Function to add element references
   const addToElements = (el: HTMLDivElement | null, index: number) => {
@@ -70,6 +73,44 @@ const AboutUs = () => {
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
+    });
+
+    // Why Choose Us cards animation
+    const cards = document.querySelectorAll(".why-choose-card");
+    cards.forEach((card, i) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 50,
+        rotation: 5,
+        duration: 0.8,
+        delay: i * 0.2,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+
+    // Card hover effect
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        gsap.to(card, {
+          y: -10,
+          scale: 1.02,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, {
+          y: 0,
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
     });
   }, []);
 
@@ -143,6 +184,9 @@ const AboutUs = () => {
             ></div>
           </div>
         </section>
+
+        {/* Why Choose Us Section */}
+
         {/* Mission Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 relative overflow-hidden">
           <div className="max-w-7xl mx-auto">
@@ -195,6 +239,7 @@ const AboutUs = () => {
                   ))}
                 </div>
               </div>
+
               <div className="relative h-96">
                 <div className="absolute inset-0 bg-[#033D54] rounded-xl overflow-hidden">
                   <div className="absolute inset-0 opacity-10">
@@ -241,6 +286,81 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
+
+        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+          {/* Background decorative elements */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
+          </div>
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16" ref={whyChooseUsRef}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#033D54] to-[#0a6b8a]">
+                Why Choose Us
+              </h2>
+              <p className="text-xl text-[#033D54] max-w-3xl mx-auto">
+                At IKIM Tech, we combine innovation, expertise, and dedication
+                to deliver exceptional results. Here's why we stand out:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  icon: FaCheckCircle,
+                  title: "Quality",
+                  description:
+                    "Delivering excellence in every project with uncompromising quality standards",
+                },
+                {
+                  icon: FaPalette,
+                  title: "Creative",
+                  description:
+                    "Innovative solutions that push boundaries and set new industry standards",
+                },
+                {
+                  icon: FaUsers,
+                  title: "Designers",
+                  description:
+                    "Expert team of designers crafting beautiful and functional experiences",
+                },
+                {
+                  icon: FaComments,
+                  title: "Free Consultation",
+                  description:
+                    "Comprehensive consultation to understand your unique needs",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="why-choose-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100 relative group"
+                >
+                  {/* Card background effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#033D54]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Icon container with gradient background */}
+                  <div className="relative mb-6">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#033D54] to-[#0a6b8a] flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
+                      <item.icon className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+
+                  <h3 className="text-2xl font-bold mb-4 text-[#033D54] group-hover:translate-x-2 transition-transform duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#033D54]/80">{item.description}</p>
+
+                  {/* Decorative corner accent */}
+                  <div className="absolute bottom-0 right-0 w-16 h-16 overflow-hidden">
+                    <div className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-br from-[#033D54]/10 to-transparent transform rotate-45 translate-x-4 translate-y-4" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* History Timeline */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center mb-16" ref={(el) => addToElements(el, 8)}>
@@ -285,7 +405,7 @@ const AboutUs = () => {
               <div
                 key={index}
                 ref={(el) => addToElements(el, 9 + index)}
-                className={`mb-12 w-full flex ${
+                className={`mb-6 w-full flex ${
                   index % 2 === 0 ? "justify-start" : "justify-end"
                 }`}
               >
@@ -321,58 +441,53 @@ const AboutUs = () => {
             ))}
           </div>
         </section>
+
         {/* Stats Section */}
-       {/* Stats Section */}
-<section className="px-4 sm:px-6 lg:px-8 bg-white">
-  <div
-    className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-    ref={(el) => addToElements(el, 13)}
-  >
-    {[
-      { value: 50, label: "Projects Completed" },
-      { value: 100, label: "Client Satisfaction" },
-      { value: 15, label: "Years Experience" },
-      { value: 24, label: "Support Available" },
-    ].map((stat, index) => (
-      <div key={index} className="p-4">
-        <div 
-          className="text-4xl md:text-5xl font-bold mb-2" 
-          style={{ color: '#033D54' }}
-        >
-          <Counter target={stat.value} />+
-        </div>
-        <div className="text-lg opacity-80" style={{ color: '#033D54' }}>
-          {stat.label}
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
-       
+        <section className="px-4 sm:px-6 lg:px-8 bg-white">
+          <div
+            className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+            ref={(el) => addToElements(el, 13)}
+          >
+            {[
+              { value: 50, label: "Projects Completed" },
+              { value: 100, label: "Client Satisfaction" },
+              { value: 15, label: "Years Experience" },
+              { value: 24, label: "Support Available" },
+            ].map((stat, index) => (
+              <div key={index} className="p-4">
+                <div
+                  className="text-4xl md:text-5xl font-bold mb-2"
+                  style={{ color: "#033D54" }}
+                >
+                  <Counter target={stat.value} />+
+                </div>
+                <div
+                  className="text-lg opacity-80"
+                  style={{ color: "#033D54" }}
+                >
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Team Section */}
-    
-          <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-            <div
-              ref={(el) => {
-                if (el) {
-                  elements.current[14] = el;
-                }
-              }}
+        <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+          <div ref={(el) => addToElements(el, 14)}>
+            <h2
+              className="text-2xl font-bold mb-6"
+              style={{ color: "#033D54" }}
             >
-              <h2
-                className="text-2xl font-bold mb-6"
-                style={{ color: "#033D54" }}
-              >
-                Want to meet the people behind our success?
-              </h2>
-              <Link href="/teams">
-                <button className="px-8 py-3 bg-[#033D54] text-white rounded-full font-medium hover:bg-[#0a6b8a] transition-all">
-                  Meet Our Team
-                </button>
-              </Link>
-            </div>
-          </section>
-       
+              Want to meet the people behind our success?
+            </h2>
+            <Link href="/teams">
+              <button className="px-8 py-3 bg-[#033D54] text-white rounded-full font-medium hover:bg-[#0a6b8a] transition-all">
+                Meet Our Team
+              </button>
+            </Link>
+          </div>
+        </section>
       </div>
     </>
   );
