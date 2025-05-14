@@ -245,7 +245,7 @@ const TeamsPage = () => {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">Join Our Team</h2>
             <p className="text-xl mb-8 opacity-90">
-              We're always looking for talented individuals to join our growing
+              We&apos;re always looking for talented individuals to join our growing
               team.
             </p>
             <button className="px-8 py-3 bg-white text-[#033D54] rounded-full font-medium hover:bg-opacity-90 transition-all">
