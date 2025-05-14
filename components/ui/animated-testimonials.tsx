@@ -19,10 +19,9 @@ export const AnimatedTestimonials = ({
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
-
-  const handleNext = () => {
-    setActive((prev) => (prev + 1) % testimonials.length);
-  };
+const handleNext = useCallback(() => {
+  setActive((prev) => (prev + 1) % testimonials.length);
+}, [testimonials.length]);
 
   const handlePrev = () => {
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
