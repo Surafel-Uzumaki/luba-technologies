@@ -35,18 +35,18 @@ const ContactUs = () => {
   };
 
   // Floating animation for cards
-  const floatingAnimation: import("framer-motion").TargetAndTransition = {
+  const floatingAnimation = {
     y: [-5, 5],
     transition: {
       duration: 2,
       repeat: Infinity,
-      repeatType: "reverse" as "reverse",
+      repeatType: "reverse" as const,
       ease: "easeInOut",
     },
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <div id="contactus" className="min-h-screen bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated gradient circles */}
@@ -84,36 +84,44 @@ const ContactUs = () => {
         />
 
         {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-[#033D54]/5"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              x: [
-                Math.random() * window.innerWidth,
-                Math.random() * window.innerWidth,
-              ],
-              y: [
-                Math.random() * window.innerHeight,
-                Math.random() * window.innerHeight,
-              ],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: Math.random() * 20 + 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            style={{
-              width: Math.random() * 10 + 5,
-              height: Math.random() * 10 + 5,
-            }}
-          />
-        ))}
+        {[...Array(20)].map((_, i) => {
+          // Safely get window dimensions for SSR
+          const getWindowWidth = () =>
+            typeof window !== "undefined" ? window.innerWidth : 1200;
+          const getWindowHeight = () =>
+            typeof window !== "undefined" ? window.innerHeight : 800;
+
+          return (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-[#033D54]/5"
+              initial={{
+                x: Math.random() * getWindowWidth(),
+                y: Math.random() * getWindowHeight(),
+              }}
+              animate={{
+                x: [
+                  Math.random() * getWindowWidth(),
+                  Math.random() * getWindowWidth(),
+                ],
+                y: [
+                  Math.random() * getWindowHeight(),
+                  Math.random() * getWindowHeight(),
+                ],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: Math.random() * 20 + 20,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              style={{
+                width: Math.random() * 10 + 5,
+                height: Math.random() * 10 + 5,
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Main Content */}
@@ -132,7 +140,7 @@ const ContactUs = () => {
               </span>
             </h1>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              We'd love to hear from you. Send us a message and we'll respond as
+              We&apos;d love to hear from you. Send us a message and we&apos;ll respond as
               soon as possible.
             </p>
           </motion.div>
@@ -249,8 +257,8 @@ const ContactUs = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-300">Visit Us</p>
-                    <p className="font-medium">123 Business Street</p>
-                    <p className="text-sm text-gray-300">New York, NY 10001</p>
+                    <p className="font-medium">Bole road</p>
+                    <p className="text-sm text-gray-300">Addis Ababa, Bole</p>
                   </div>
                 </motion.div>
 

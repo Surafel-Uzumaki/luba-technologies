@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Head from "next/head";
+import { teamMembers,teamPageData } from "@/data/data";
 
 const TeamsPage = () => {
   const teamRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -117,7 +118,7 @@ const TeamsPage = () => {
               className="text-4xl md:text-6xl font-bold mb-6"
               style={{ color: "#033D54" }}
             >
-              Meet Our{" "}
+              {teamPageData.title}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#033D54] to-[#0a6b8a]">
                 Team
               </span>
@@ -126,7 +127,7 @@ const TeamsPage = () => {
               className="text-xl max-w-3xl mx-auto"
               style={{ color: "#033D54" }}
             >
-              The talented individuals driving innovation at IKIM-TECH
+              {teamPageData.subtitle}
             </p>
           </div>
         </section>
@@ -134,54 +135,9 @@ const TeamsPage = () => {
         {/* Team Grid */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Alex Johnson",
-                role: "CEO & Founder",
-                bio: "Visionary leader with 15+ years in tech innovation",
-                expertise: [
-                  "Strategic Planning",
-                  "Business Development",
-                  "Leadership",
-                ],
-              },
-              {
-                name: "Maria Garcia",
-                role: "CTO",
-                bio: "Tech architect specializing in scalable solutions",
-                expertise: ["System Architecture", "Cloud Computing", "DevOps"],
-              },
-              {
-                name: "Sam Wilson",
-                role: "Lead Developer",
-                bio: "Full-stack wizard with a passion for clean code",
-                expertise: ["JavaScript", "React", "Node.js"],
-              },
-              {
-                name: "Taylor Smith",
-                role: "UX Designer",
-                bio: "Creating intuitive user experiences",
-                expertise: ["UI/UX Design", "User Research", "Prototyping"],
-              },
-              {
-                name: "Jordan Lee",
-                role: "DevOps Engineer",
-                bio: "Cloud infrastructure specialist",
-                expertise: ["AWS", "Docker", "CI/CD"],
-              },
-              {
-                name: "Casey Kim",
-                role: "Product Manager",
-                bio: "Bridging business and technology",
-                expertise: [
-                  "Agile Methodologies",
-                  "Product Strategy",
-                  "Market Analysis",
-                ],
-              },
-            ].map((member, index) => (
+            {teamMembers.map((member, index) => (
               <div
-                key={index}
+                key={member.id}
                 ref={(el) => {
                   teamRefs.current[index] = el;
                 }}
@@ -191,7 +147,7 @@ const TeamsPage = () => {
                   <div className="absolute inset-0 opacity-20">
                     <svg width="100%" height="100%">
                       <pattern
-                        id={`team-pattern-${index}`}
+                        id={`team-pattern-${member.id}`}
                         width="20"
                         height="20"
                         patternUnits="userSpaceOnUse"
@@ -201,7 +157,7 @@ const TeamsPage = () => {
                       <rect
                         width="100%"
                         height="100%"
-                        fill={`url(#team-pattern-${index})`}
+                        fill={`url(#team-pattern-${member.id})`}
                       />
                     </svg>
                   </div>
@@ -243,13 +199,12 @@ const TeamsPage = () => {
         {/* CTA Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#033D54] text-white text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">Join Our Team</h2>
+            <h2 className="text-3xl font-bold mb-6">{teamPageData.cta.title}</h2>
             <p className="text-xl mb-8 opacity-90">
-              We&apos;re always looking for talented individuals to join our growing
-              team.
+              {teamPageData.cta.description}
             </p>
             <button className="px-8 py-3 bg-white text-[#033D54] rounded-full font-medium hover:bg-opacity-90 transition-all">
-              View Open Positions
+              {teamPageData.cta.buttonText}
             </button>
           </div>
         </section>

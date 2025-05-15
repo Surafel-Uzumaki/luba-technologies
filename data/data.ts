@@ -53,3 +53,74 @@ export const projectsData: Project[] = [
     tags: ["AWS", "Express.js", "PostgreSQL", "TypeScript"],
   },
 ];
+// teams data
+
+export type teamMembers = {
+  name: string;
+  role: string;
+  bio: string;
+  expertise: string[];
+};
+
+export const teamMembers = [
+  {
+    id: 1,
+    name: "Mikiyas Taye",
+    role: "CEO & Website Developer",
+    bio: "",
+    expertise: [],
+  },
+  {
+    id: 2,
+    name: "Amen Dereje",
+    role: "Website Developer",
+    bio: "",
+    expertise: [],
+  },
+  {
+    id: 3,
+    name: "Betselot Bezuayehu",
+    role: "Software Developer",
+    bio: "",
+    expertise: [],
+  },
+  {
+    id: 4,
+    name: "Jecoliah Menberu",
+    role: "Sales Agent",
+    bio: "",
+    expertise: [],
+  },
+  {
+    id: 5,
+    name: "Bisrat Kifle",
+    role: "Graphics Designer and Video Editor",
+    bio: "",
+    expertise: [],
+  },
+  {
+    id: 6,
+    name: "Tesfahun Gibitan",
+    role: "3D and VFX Artist",
+    bio: "",
+    expertise: [],
+  },
+  {
+    id: 7,
+    name: "Mikyas Seffi",
+    role: "Marketing Consultant",
+    bio: "",
+    expertise: [],
+  },
+];
+
+
+export const teamPageData = {
+  title: "Meet Our Team",
+  subtitle: "The talented individuals driving innovation at IKIM-TECH",
+  cta: {
+    title: "Join Our Team",
+    description: "We're always looking for talented individuals to join our growing team.",
+    buttonText: "View Open Positions"
+  }
+};

@@ -5,7 +5,6 @@ import Head from "next/head";
 import Link from "next/link";
 import { FaCheckCircle, FaPalette, FaUsers, FaComments } from "react-icons/fa";
 
-// Ensure types are correctly recognized for GSAP plugins
 declare module "gsap" {
   interface TweenVars {
     scrollTrigger?: ScrollTrigger.Vars;
@@ -13,29 +12,21 @@ declare module "gsap" {
 }
 
 const AboutUs = () => {
-  // Refs with proper typing
   const elements = useRef<HTMLDivElement[]>([]);
   const floatingShapes = useRef<SVGSVGElement[]>([]);
   const whyChooseUsRef = useRef<HTMLDivElement>(null);
 
-  // Function to add element references
   const addToElements = (el: HTMLDivElement | null, index: number) => {
-    if (el) {
-      elements.current[index] = el;
-    }
+    if (el) elements.current[index] = el;
   };
 
   const addToFloatingShapes = (el: SVGSVGElement | null, index: number) => {
-    if (el) {
-      floatingShapes.current[index] = el;
-    }
+    if (el) floatingShapes.current[index] = el;
   };
 
   useEffect(() => {
-    // Register GSAP plugin
     gsap.registerPlugin(ScrollTrigger);
 
-    // Floating background shapes animation
     floatingShapes.current.forEach((shape, i) => {
       if (!shape) return;
 
@@ -48,57 +39,53 @@ const AboutUs = () => {
       });
     });
 
-    // Section animations
     elements.current.forEach((el, i) => {
       if (!el) return;
 
       gsap.from(el, {
         opacity: 0,
-        y: 50,
-        duration: 0.8,
-        delay: i * 0.1,
+        y: 40,
+        duration: 0.15,
+        delay: i * 0.05,
         scrollTrigger: {
           trigger: el,
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
     });
 
-    // Text wave animation for the hero
     gsap.to(".wave-text span", {
       y: -10,
-      duration: 2,
-      stagger: 0.1,
+      duration: 0.08,
+      stagger: 0.08,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
     });
 
-    // Why Choose Us cards animation
     const cards = document.querySelectorAll(".why-choose-card");
     cards.forEach((card, i) => {
       gsap.from(card, {
         opacity: 0,
-        y: 50,
-        rotation: 5,
-        duration: 0.8,
-        delay: i * 0.2,
+        y: 40,
+        rotation: 4,
+        duration: 0.15,
+        delay: i * 0.1,
         scrollTrigger: {
           trigger: card,
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       });
     });
 
-    // Card hover effect
     cards.forEach((card) => {
       card.addEventListener("mouseenter", () => {
         gsap.to(card, {
-          y: -10,
+          y: -8,
           scale: 1.02,
-          duration: 0.3,
+          duration: 0.15,
           ease: "power2.out",
         });
       });
@@ -107,7 +94,7 @@ const AboutUs = () => {
         gsap.to(card, {
           y: 0,
           scale: 1,
-          duration: 0.3,
+          duration: 0.15,
           ease: "power2.out",
         });
       });
@@ -117,16 +104,19 @@ const AboutUs = () => {
   return (
     <>
       <Head>
-        <title>About Us | IKIM-TECH</title>
+        <title>IKIM-TECH</title>
         <meta
           name="description"
           content="Learn about IKIM-TECH and our mission to deliver innovative tech solutions"
         />
       </Head>
+
       <div className="min-h-screen bg-white overflow-hidden">
         {/* Hero Section */}
-        <section className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
-          {/* Floating background shapes */}
+        <section
+          id="aboutus"
+          className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative"
+        >
           {[...Array(8)].map((_, i) => (
             <svg
               key={i}
@@ -157,6 +147,7 @@ const AboutUs = () => {
               )}
             </svg>
           ))}
+
           <div
             ref={(el) => addToElements(el, 0)}
             className="text-center relative z-10"
@@ -181,11 +172,9 @@ const AboutUs = () => {
             <div
               className="w-24 h-2 bg-gradient-to-r from-[#033D54] to-[#0a6b8a] mx-auto rounded-full"
               ref={(el) => addToElements(el, 2)}
-            ></div>
+            />
           </div>
         </section>
-
-        {/* Why Choose Us Section */}
 
         {/* Mission Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 relative overflow-hidden">
@@ -194,6 +183,7 @@ const AboutUs = () => {
               className="grid md:grid-cols-2 gap-12 items-center"
               ref={(el) => addToElements(el, 3)}
             >
+              {/* Mission Text */}
               <div>
                 <h2
                   className="text-3xl font-bold mb-6"
@@ -240,6 +230,7 @@ const AboutUs = () => {
                 </div>
               </div>
 
+              {/* Visual Element */}
               <div className="relative h-96">
                 <div className="absolute inset-0 bg-[#033D54] rounded-xl overflow-hidden">
                   <div className="absolute inset-0 opacity-10">
@@ -261,8 +252,8 @@ const AboutUs = () => {
                     <div
                       className="absolute inset-0 border-4 border-white border-opacity-30 rounded-full animate-spin-slow"
                       style={{ animationDirection: "reverse" }}
-                    ></div>
-                    <div className="absolute inset-4 border-4 border-white border-opacity-30 rounded-full animate-spin-medium"></div>
+                    />
+                    <div className="absolute inset-4 border-4 border-white border-opacity-30 rounded-full animate-spin-medium" />
                     <div className="absolute inset-8 flex items-center justify-center">
                       <div className="h-32 w-32 rounded-full bg-white bg-opacity-10 flex items-center justify-center">
                         <svg
@@ -287,13 +278,10 @@ const AboutUs = () => {
           </div>
         </section>
 
+        {/* Why Choose Us */}
         <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-          {/* Background decorative elements */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
-          </div>
-
+          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16" ref={whyChooseUsRef}>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#033D54] to-[#0a6b8a]">
@@ -301,7 +289,7 @@ const AboutUs = () => {
               </h2>
               <p className="text-xl text-[#033D54] max-w-3xl mx-auto">
                 At IKIM Tech, we combine innovation, expertise, and dedication
-                to deliver exceptional results. Here's why we stand out:
+                to deliver exceptional results. Here&apos;s why we stand out:
               </p>
             </div>
 
@@ -336,109 +324,19 @@ const AboutUs = () => {
                   key={index}
                   className="why-choose-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100 relative group"
                 >
-                  {/* Card background effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#033D54]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  {/* Icon container with gradient background */}
                   <div className="relative mb-6">
                     <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#033D54] to-[#0a6b8a] flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
                       <item.icon className="w-8 h-8 text-white" />
                     </div>
                   </div>
-
                   <h3 className="text-2xl font-bold mb-4 text-[#033D54] group-hover:translate-x-2 transition-transform duration-300">
                     {item.title}
                   </h3>
                   <p className="text-[#033D54]/80">{item.description}</p>
-
-                  {/* Decorative corner accent */}
-                  <div className="absolute bottom-0 right-0 w-16 h-16 overflow-hidden">
-                    <div className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-br from-[#033D54]/10 to-transparent transform rotate-45 translate-x-4 translate-y-4" />
-                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* History Timeline */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="text-center mb-16" ref={(el) => addToElements(el, 8)}>
-            <h2
-              className="text-3xl font-bold mb-4"
-              style={{ color: "#033D54" }}
-            >
-              Our Journey
-            </h2>
-            <p
-              className="text-xl max-w-2xl mx-auto"
-              style={{ color: "#033D54" }}
-            >
-              Milestones that shaped our company
-            </p>
-          </div>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 h-full w-1 bg-[#033D54] bg-opacity-20 transform -translate-x-1/2"></div>
-            {[
-              {
-                year: "2010",
-                title: "Company Founded",
-                description: "Started in a small office with 3 team members",
-              },
-              {
-                year: "2014",
-                title: "First Major Client",
-                description: "Secured partnership with Fortune 500 company",
-              },
-              {
-                year: "2018",
-                title: "Expanded Globally",
-                description: "Opened offices in 3 new countries",
-              },
-              {
-                year: "2022",
-                title: "Tech Award Winner",
-                description: "Recognized as industry leader in innovation",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                ref={(el) => addToElements(el, 9 + index)}
-                className={`mb-6 w-full flex ${
-                  index % 2 === 0 ? "justify-start" : "justify-end"
-                }`}
-              >
-                <div
-                  className={`w-full md:w-1/2 p-6 rounded-lg ${
-                    index % 2 === 0 ? "md:pr-16" : "md:pl-16"
-                  }`}
-                >
-                  <div className="bg-white p-8 shadow-lg rounded-lg relative">
-                    <div
-                      className={`absolute top-8 w-4 h-4 rounded-full bg-[#033D54] ${
-                        index % 2 === 0
-                          ? "-right-2 md:-right-8"
-                          : "-left-2 md:-left-8"
-                      }`}
-                    ></div>
-                    <div
-                      className="text-sm font-bold mb-1"
-                      style={{ color: "#0a6b8a" }}
-                    >
-                      {item.year}
-                    </div>
-                    <h3
-                      className="text-xl font-bold mb-2"
-                      style={{ color: "#033D54" }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p style={{ color: "#033D54" }}>{item.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 
@@ -472,7 +370,7 @@ const AboutUs = () => {
           </div>
         </section>
 
-        {/* Team Section */}
+        {/* Team CTA */}
         <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
           <div ref={(el) => addToElements(el, 14)}>
             <h2
@@ -493,7 +391,6 @@ const AboutUs = () => {
   );
 };
 
-// Counter component for stats animation
 interface CounterProps {
   target: number;
 }
@@ -506,11 +403,11 @@ const Counter = ({ target }: CounterProps) => {
 
     gsap.to(counterRef.current, {
       innerText: target,
-      duration: 6,
+      duration: 2.5,
       snap: { innerText: 1 },
       scrollTrigger: {
         trigger: counterRef.current,
-        start: "top 80%",
+        start: "top 85%",
         toggleActions: "play none none none",
       },
     });

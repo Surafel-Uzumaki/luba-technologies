@@ -111,8 +111,16 @@ const getRandomParticles = (count: number) => {
     initialX: Math.random() * width,
     initialY: Math.random() * height,
     scale: Math.random() * 0.5 + 0.5,
-    animX: [Math.random() * width, Math.random() * width, Math.random() * width],
-    animY: [Math.random() * height, Math.random() * height, Math.random() * height],
+    animX: [
+      Math.random() * width,
+      Math.random() * width,
+      Math.random() * width,
+    ],
+    animY: [
+      Math.random() * height,
+      Math.random() * height,
+      Math.random() * height,
+    ],
     opacity: [0.1, 0.3, 0.1],
     duration: Math.random() * 20 + 20,
     width: Math.random() * 20 + 10,
@@ -311,6 +319,7 @@ const Services = () => {
 
   return (
     <section
+      id="services"
       ref={containerRef}
       className="relative bg-white py-32 overflow-hidden"
     >
@@ -383,7 +392,14 @@ const Services = () => {
   );
 };
 
-const ServiceCard = ({ service, index }: { service: any; index: number }) => {
+type Service = {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+};
+
+const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}

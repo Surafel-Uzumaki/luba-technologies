@@ -18,7 +18,7 @@ export default function Projects() {
   useEffect(() => {
     if (!cardRefs.current.length) return;
 
-    cardRefs.current.forEach((el, i) => {
+    cardRefs.current.forEach((el,) => {
       if (el) {
         gsap.from(el, {
           opacity: 0,
@@ -38,7 +38,10 @@ export default function Projects() {
   return (
     <div className="min-h-screen bg-white" ref={sectionRef}>
       {/* Hero Section */}
-      <section className="py-20 px-6 sm:px-8 lg:px-20 text-center relative">
+      <section
+        id="projects"
+        className="py-20 px-6 sm:px-8 lg:px-20 text-center relative"
+      >
         <h1
           className="text-4xl md:text-6xl font-bold mb-4"
           style={{ color: "#033D54" }}
