@@ -18,7 +18,7 @@ export default function Projects() {
   useEffect(() => {
     if (!cardRefs.current.length) return;
 
-    cardRefs.current.forEach((el,) => {
+    cardRefs.current.forEach((el) => {
       if (el) {
         gsap.from(el, {
           opacity: 0,
@@ -138,7 +138,7 @@ const ProjectCard = ({
         boxShadow: "0 10px 25px rgba(3, 61, 84, 0.1)",
       }}
     >
-      <Link href={`/projects/${project.id}`}>
+      <Link href={project.link ?? "#home"}>
         <img
           src={project.image}
           alt={project.title}
@@ -212,7 +212,7 @@ const ProjectCard = ({
         </div>
 
         {/* View Details Button - Rectangle Style */}
-        <Link href={`/projects/${project.id}`}>
+        <Link href={project.link ?? "#home"}>
           <button
             className="w-full py-3 mt-2 rounded-md font-medium flex items-center justify-center gap-2 transition-transform hover:bg-[#0a6b8a] group"
             style={{

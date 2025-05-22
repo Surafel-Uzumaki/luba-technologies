@@ -71,9 +71,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-white">IKIM-TECH</h3>
+            <h3 className="text-2xl font-bold text-white">Luba-Technologies</h3>
             <p className="text-white opacity-80">
-              Innovating technology solutions for a better tomorrow.
+              Creating platforms, connecting people, growing like family.
             </p>
           </div>
 
@@ -87,9 +87,9 @@ const Footer = () => {
                 // Map item to route path
                 const hrefMap: { [key: string]: string } = {
                   Home: "/",
-                  Aboutus: "/aboutus",
-                  Projects: "/projects",
-                  Contact: "/contact",
+                  Aboutus: "#aboutus",
+                  Projects: "#projects",
+                  Contact: "#contactus",
                 };
                 return (
                   <li key={item}>
@@ -112,20 +112,18 @@ const Footer = () => {
               Contact Us
             </h4>
             <address className="not-italic space-y-2">
-              <p className="text-white opacity-80">Bole Road</p>
-              <p className="text-white opacity-80">Addis Ababa</p>
-              <p className="text-white opacity-80">Ethiopia</p>
+            
               <Link
                 href="mailto:info@ikim.tech"
                 className="block text-white hover:text-[#0a6b8a] transition-colors duration-300"
               >
-                info@ikim.tech
+               Lubatechnologies@gmail.com
               </Link>
               <Link
-                href="tel:+1234567890"
+                href="tel:+251941225055"
                 className="block text-white hover:text-[#0a6b8a] transition-colors duration-300"
               >
-                +1 (234) 567-890
+                +251-941-225-055
               </Link>
             </address>
           </div>
@@ -137,7 +135,7 @@ const Footer = () => {
         {/* Copyright - Centered */}
         <div className="text-center">
           <p className="text-white opacity-80 text-sm">
-            &copy; 2025 IKIM-TECH. All rights reserved.
+            &copy; 2025 Luba Technologies. All rights reserved.
           </p>
         </div>
       </div>

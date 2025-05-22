@@ -72,34 +72,34 @@ const services = [
     icon: "palette",
     color: "from-[#033D54] to-[#022534]",
   },
-  {
-    title: "Printing",
-    description:
-      "Our printing design service specializes in creating high-quality graphics for print media like brochures, business cards, and posters.",
-    icon: "print",
-    color: "from-[#033D54] to-[#022534]",
-  },
-  {
-    title: "3D Designing",
-    description:
-      "Offers innovative solutions for creating detailed three-dimensional models and visualizations. Whether for product design, architectural visualization, or animation.",
-    icon: "cube",
-    color: "from-[#033D54] to-[#022534]",
-  },
-  {
-    title: "Video Editing",
-    description:
-      "Transforms raw footage into polished, engaging content. We specialize in creating captivating videos for promotional materials, social media, events, and more.",
-    icon: "video",
-    color: "from-[#033D54] to-[#022534]",
-  },
-  {
-    title: "Market Consultancy",
-    description:
-      "Expert analysis and strategic insights to help businesses understand market trends, identify opportunities, and make data-driven decisions for growth and success.",
-    icon: "chart",
-    color: "from-[#033D54] to-[#022534]",
-  },
+  // {
+  //   title: "Printing",
+  //   description:
+  //     "Our printing design service specializes in creating high-quality graphics for print media like brochures, business cards, and posters.",
+  //   icon: "print",
+  //   color: "from-[#033D54] to-[#022534]",
+  // },
+  // {
+  //   title: "3D Designing",
+  //   description:
+  //     "Offers innovative solutions for creating detailed three-dimensional models and visualizations. Whether for product design, architectural visualization, or animation.",
+  //   icon: "cube",
+  //   color: "from-[#033D54] to-[#022534]",
+  // },
+  // {
+  //   title: "Video Editing",
+  //   description:
+  //     "Transforms raw footage into polished, engaging content. We specialize in creating captivating videos for promotional materials, social media, events, and more.",
+  //   icon: "video",
+  //   color: "from-[#033D54] to-[#022534]",
+  // },
+  // {
+  //   title: "Market Consultancy",
+  //   description:
+  //     "Expert analysis and strategic insights to help businesses understand market trends, identify opportunities, and make data-driven decisions for growth and success.",
+  //   icon: "chart",
+  //   color: "from-[#033D54] to-[#022534]",
+  // },
 ];
 
 // Particle animation component

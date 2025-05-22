@@ -111,12 +111,12 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <div className="relative overflow-hidden group">
-              <span className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 bg-clip-text text-transparent transition-all duration-300 group-hover:opacity-80  sm:pl-8 md:pl-8">
-                IKIM
-              </span>
+              <span className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 bg-clip-text text-transparent transition-all duration-300 group-hover:opacity-80  sm:pl-8 md:pl-8 ">
+                Luba   
+              </span> 
               <span className="text-2xl sm:text-3xl font-black relative">
-                <span className="text-white transition-all duration-300 group-hover:opacity-80">
-                  TECH
+                <span className="text-white transition-all duration-300 group-hover:opacity-80 pl-2">
+                    Technologies
                 </span>
                 <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
               </span>

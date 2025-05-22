@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import {
   FaPhone,
   FaEnvelope,
-  FaMapMarkerAlt,
+  FaWhatsapp,
   FaLinkedin,
-  FaTwitter,
-  FaInstagram,
+  FaTiktok,
+  FaTelegram,
 } from "react-icons/fa";
 
 const ContactUs = () => {
@@ -45,8 +45,35 @@ const ContactUs = () => {
     },
   };
 
+  interface SocialIcon {
+    icon: React.ComponentType<{ className?: string }>;
+    link: string;
+  }
+
+  const socialIcons: SocialIcon[] = [
+    {
+      icon: FaLinkedin,
+      link: "www.linkedin.com/in/luba-technologies-5a5713367",
+    },
+    {
+      icon: FaTiktok,
+      link: "https://www.tiktok.com/@lubatechnologies",
+    },
+    {
+      icon: FaTelegram,
+      link: "https:///T.me/Lubatechet/",
+    },
+    {
+      icon: FaWhatsapp,
+      link: "https://wa.me/251941225055",
+    },
+  ];
+
   return (
-    <div id="contactus" className="min-h-screen bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <div
+      id="contactus"
+      className="min-h-screen bg-gradient-to-b from-white to-gray-50 relative overflow-hidden"
+    >
       {/* Premium Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated gradient circles */}
@@ -136,12 +163,12 @@ const ContactUs = () => {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#033D54] to-[#022534]">
-                Get in Touch
+                Get In Touch With Us
               </span>
             </h1>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              We&apos;d love to hear from you. Send us a message and we&apos;ll respond as
-              soon as possible.
+              We&apos;re not just your developers, we&apos;re your digital
+              family.
             </p>
           </motion.div>
 
@@ -221,7 +248,7 @@ const ContactUs = () => {
                 <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
 
                 <motion.a
-                  href="tel:+1234567890"
+                  href="tel:+251941225055"
                   className="flex items-center space-x-4 hover:opacity-80 transition-opacity"
                   whileHover={{ x: 10 }}
                 >
@@ -230,12 +257,12 @@ const ContactUs = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-300">Call Us</p>
-                    <p className="font-medium">+1 (234) 567-890</p>
+                    <p className="font-medium">+251-941-225-055</p>
                   </div>
                 </motion.a>
 
                 <motion.a
-                  href="mailto:info@example.com"
+                  href="mailto:Lubatechnologies@gmail.com"
                   className="flex items-center space-x-4 hover:opacity-80 transition-opacity"
                   whileHover={{ x: 10 }}
                 >
@@ -244,31 +271,19 @@ const ContactUs = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-300">Email Us</p>
-                    <p className="font-medium">info@example.com</p>
+                    <p className="font-medium">Lubatechnologies@gmail.com</p>
                   </div>
                 </motion.a>
-
-                <motion.div
-                  className="flex items-center space-x-4"
-                  whileHover={{ x: 10 }}
-                >
-                  <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                    <FaMapMarkerAlt className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-300">Visit Us</p>
-                    <p className="font-medium">Bole road</p>
-                    <p className="text-sm text-gray-300">Addis Ababa, Bole</p>
-                  </div>
-                </motion.div>
 
                 <div className="pt-8 mt-8 border-t border-white/10">
                   <p className="text-sm text-gray-300 mb-4">Follow Us</p>
                   <div className="flex space-x-4">
-                    {[FaLinkedin, FaTwitter, FaInstagram].map((Icon, i) => (
+                    {socialIcons.map(({ icon: Icon, link }, i) => (
                       <motion.a
                         key={i}
-                        href="#"
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
                         whileHover={{ y: -5 }}
                         whileTap={{ scale: 0.95 }}
@@ -283,7 +298,7 @@ const ContactUs = () => {
           </div>
 
           {/* Map Section */}
-          <motion.div
+          {/* <motion.div
             variants={itemVariants}
             className="mt-16 rounded-2xl overflow-hidden shadow-xl h-[400px] relative"
           >
@@ -295,7 +310,7 @@ const ContactUs = () => {
               allowFullScreen
               loading="lazy"
             />
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </div>

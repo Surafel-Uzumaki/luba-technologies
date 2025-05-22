@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Head from "next/head";
-import Link from "next/link";
 import { FaCheckCircle, FaPalette, FaUsers, FaComments } from "react-icons/fa";
 
 declare module "gsap" {
@@ -104,7 +103,7 @@ const AboutUs = () => {
   return (
     <>
       <Head>
-        <title>IKIM-TECH</title>
+        <title>Luba Technologies</title>
         <meta
           name="description"
           content="Learn about IKIM-TECH and our mission to deliver innovative tech solutions"
@@ -156,9 +155,9 @@ const AboutUs = () => {
               className="text-4xl md:text-6xl font-bold mb-6 wave-text"
               style={{ color: "#033D54" }}
             >
-              {"About IKIM-TECH".split("").map((char, i) => (
+              {"Luba Technologies".split("").map((charachter, i) => (
                 <span key={i} className="inline-block">
-                  {char === " " ? "\u00A0" : char}
+                  {charachter === " " ? "\u00A0" : charachter}
                 </span>
               ))}
             </h1>
@@ -167,7 +166,7 @@ const AboutUs = () => {
               style={{ color: "#033D54" }}
               ref={(el) => addToElements(el, 1)}
             >
-              Pioneering technology solutions with innovation at our core
+             Empowering Success & Growth Through the Light of Technology.
             </p>
             <div
               className="w-24 h-2 bg-gradient-to-r from-[#033D54] to-[#0a6b8a] mx-auto rounded-full"
@@ -343,21 +342,21 @@ const AboutUs = () => {
         {/* Stats Section */}
         <section className="px-4 sm:px-6 lg:px-8 bg-white">
           <div
-            className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+            className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
             ref={(el) => addToElements(el, 13)}
           >
             {[
-              { value: 50, label: "Projects Completed" },
-              { value: 100, label: "Client Satisfaction" },
-              { value: 15, label: "Years Experience" },
-              { value: 24, label: "Support Available" },
+              { value: "100%", label: "Projects Completion" },
+              { value: "100%", label: "Client Satisfaction" },
+              // { value: 15, label: "Years Experience" },
+              { value: "24Hr", label: "Support Available" },
             ].map((stat, index) => (
               <div key={index} className="p-4">
                 <div
                   className="text-4xl md:text-5xl font-bold mb-2"
                   style={{ color: "#033D54" }}
                 >
-                  <Counter target={stat.value} />+
+                  <Counter target={stat.value} />
                 </div>
                 <div
                   className="text-lg opacity-80"
@@ -371,7 +370,7 @@ const AboutUs = () => {
         </section>
 
         {/* Team CTA */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        {/* <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
           <div ref={(el) => addToElements(el, 14)}>
             <h2
               className="text-2xl font-bold mb-6"
@@ -385,14 +384,14 @@ const AboutUs = () => {
               </button>
             </Link>
           </div>
-        </section>
+        </section> */}
       </div>
     </>
   );
 };
 
 interface CounterProps {
-  target: number;
+  target: string | number;
 }
 
 const Counter = ({ target }: CounterProps) => {
