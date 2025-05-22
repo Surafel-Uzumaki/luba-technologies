@@ -44,7 +44,7 @@ export default function Home() {
         <meta name="twitter:title" content="Luba Technologies" />
         <meta
           name="twitter:description"
-          content="Luba Technologies helps businesses grow with powerful and beautiful technology."
+          content="Luba Technologies helps businesses growThrough the Light of Technology."
         />
         <meta name="twitter:image" content="/favicon.png" />
       </Head>

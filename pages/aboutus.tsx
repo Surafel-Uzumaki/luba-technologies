@@ -106,7 +106,7 @@ const AboutUs = () => {
         <title>Luba Technologies</title>
         <meta
           name="description"
-          content="Learn about IKIM-TECH and our mission to deliver innovative tech solutions"
+          content="Learn about Luba-Technologies and our mission to deliver innovative tech solutions"
         />
       </Head>
 
@@ -287,7 +287,7 @@ const AboutUs = () => {
                 Why Choose Us
               </h2>
               <p className="text-xl text-[#033D54] max-w-3xl mx-auto">
-                At IKIM Tech, we combine innovation, expertise, and dedication
+                At Luba Technologies, we combine innovation, expertise, and dedication
                 to deliver exceptional results. Here&apos;s why we stand out:
               </p>
             </div>
